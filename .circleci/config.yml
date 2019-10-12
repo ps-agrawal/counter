@@ -20,6 +20,15 @@ jobs:
         - checkout
         -run: npm install
         -run: npm test
+        
+       
+jobs:
+  publish:
+    docker:
+      # specify the version you desire here
+      - image: circleci/node:7.10  
+      steps:
+      -checkout
         - run:
             name: Publish to NPM
             command: |
