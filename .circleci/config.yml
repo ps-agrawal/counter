@@ -16,12 +16,21 @@ jobs:
 
     working_directory: ~/repo
 
-    steps:
-      - checkout
+    #steps:
+     # - checkout
 
-      - run: npm install
+      #- run: npm install
 
       
 
       # run tests!
-      - run: npm test
+      #- run: npm test
+      steps:
+        - checkout
+        -run: npm install
+        -run: npm test
+        - run:
+            name: Publish to NPM
+            command: |
+              npm set //registry.npmjs.org/:_authToken=$NPM_TOKEN
+              npm publish
